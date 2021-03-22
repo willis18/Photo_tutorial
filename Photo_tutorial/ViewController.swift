@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     @objc fileprivate func onProfileChangeBtnClicked(){
         //카메라 라이브러리 세팅
         var config = YPImagePickerConfiguration()
-//        config.screens = [.library, .photo, .video]
+        //config.screens = [.library, .photo, .video]
         config.screens = [.library]
         let picker = YPImagePicker(configuration: config)
         picker.didFinishPicking { [unowned picker] items, _ in
@@ -37,6 +37,7 @@ class ViewController: UIViewController {
                 print(photo.originalImage) // original image selected by the user, unfiltered
                 print(photo.modifiedImage) // Transformed image, can be nil
                 print(photo.exifMeta) // Print exif meta data of original image.
+                self.profileImage.image = photo.image
             }
             picker.dismiss(animated: true, completion: nil)
         }
